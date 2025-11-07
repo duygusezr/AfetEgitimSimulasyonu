@@ -1,0 +1,5 @@
+C:/Users/pc/Desktop/My First Vr Game/.utmp/RelWithDebInfo/2h3fb4pb/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/pc/Desktop/My First Vr Game/.utmp/RelWithDebInfo/2h3fb4pb/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/Users/pc/Desktop/My First Vr Game/.utmp/RelWithDebInfo/2h3fb4pb/arm64-v8a/GameActivity/CMakeFiles/game.dir
+C:/Users/pc/Desktop/My First Vr Game/.utmp/RelWithDebInfo/2h3fb4pb/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+C:/Users/pc/Desktop/My First Vr Game/.utmp/RelWithDebInfo/2h3fb4pb/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
