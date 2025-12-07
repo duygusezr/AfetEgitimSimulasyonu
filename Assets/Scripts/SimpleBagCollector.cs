@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic; // YENÝ: Listeler için gerekli
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -9,39 +10,36 @@ public class SimpleBagCollector : MonoBehaviour
     public Transform hidePoint;
     public float disappearDelay = 0.15f;
 
-    // --- YENÝ EKLENDÝ: Etiket Kontrolü ---
     [Header("Filtre Ayarlarý")]
     public string kabulEdilenTag = "CantayaGirebilir";
-    // Unity'de eþyalara bu Tag'i vermeyi unutmayýn!
 
     private TutorialManager tutorialManager;
 
+    // YENÝ: Þu an iþlenen eþyalarýn listesi (Çift saymayý önler)
+    private HashSet<GameObject> islenenEsyalar = new HashSet<GameObject>();
+
     private void Start()
     {
-        // FindFirstObjectByType kullanýmý (Güncel ve doðru olan)
         tutorialManager = FindFirstObjectByType<TutorialManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // --- 1. KONTROL: ETÝKET (TAG) DOÐRU MU? ---
-        if (!other.CompareTag(kabulEdilenTag))
-        {
-            // Eðer objenin etiketi "CantayaGirebilir" deðilse,
-            // iþlemi hemen durdur. (Yastýk, kitap vb. çantaya girmez)
-            return;
-        }
-        // ------------------------------------------
+        // 1. Etiket Kontrolü
+        if (!other.CompareTag(kabulEdilenTag)) return;
+
+        // YENÝ: 2. Çift Sayma Kontrolü
+        // Eðer bu eþya zaten iþleme alýndýysa, ikinci kez sayma!
+        if (islenenEsyalar.Contains(other.gameObject)) return;
 
         XRGrabInteractable grab = other.GetComponent<XRGrabInteractable>();
-
-        if (grab == null)
-            return;
-
+        if (grab == null) return;
         if (!other.gameObject.activeInHierarchy) return;
 
-        Debug.Log("Doðru eþya bulundu ve alýnýyor: " + other.name);
+        // Eþyayý "Ýþlenenler" listesine ekle
+        islenenEsyalar.Add(other.gameObject);
 
+        Debug.Log("Doðru eþya alýndý: " + other.name);
         StartCoroutine(CollectRoutine(other, grab));
     }
 
@@ -77,9 +75,9 @@ public class SimpleBagCollector : MonoBehaviour
         if (tutorialManager != null)
         {
             tutorialManager.GoreviIlerlet(GorevTipi.CantaHazirlama);
-            Debug.Log("TutorialManager'a haber verildi: +1 Eþya");
         }
 
         item.SetActive(false);
+
     }
 }

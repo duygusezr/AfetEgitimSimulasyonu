@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public enum GorevTipi
 {
@@ -10,40 +11,37 @@ public enum GorevTipi
 
 public class TutorialManager : MonoBehaviour
 {
-    [Header("Ayarlar")]
+    [Header("UI Ayarlarý")]
+    public TextMeshProUGUI gorevMetni;
+
+    [Header("Ses Kaynaðý")]
     public AudioSource sesKaynagi;
 
-    [Header("Bölüm 1: Giriþ ve Tanýtým")]
+    [Header("Bölüm 1: Giriþ")]
     public AudioClip ses1_Giris;
     public AudioClip ses2_OrtamTanitim;
 
     [Header("Bölüm 2: Risk Avý (Sabitleme)")]
     public AudioClip ses3_SabitlemeGorevi;
     public AudioClip ses4_SabitlemeBasarili;
-
-    // --- YENÝ EKLENEN KISIM: SAYAÇ AYARLARI ---
-    [Header("Sabitleme Görevi Ayarlarý")]
-    public int sabitlemeHedefSayisi = 6; // Kaç tane braket takýlmasý lazým? (Bunu 6 yapacaðýz)
-    private int sabitlemeMevcutSayi = 0; // Þu an kaç tane takýldý?
+    public int sabitlemeHedefSayisi = 6;
+    private int sabitlemeMevcutSayi = 0;
 
     [Header("Bölüm 3: Çanta Hazýrlýðý")]
     public AudioClip ses5_CantaGorevi;
     public AudioClip ses6_CantaBasarili;
-
-    // Çanta için de birden fazla eþya (su, fener vs.) toplanacaksa burayý kullanabiliriz
-    [Header("Çanta Görevi Ayarlarý")]
-    public int cantaHedefSayisi = 1;
+    public int cantaHedefSayisi = 5;
     private int cantaMevcutSayi = 0;
 
-    [Header("Bölüm 4: Deprem Öncesi ve Aný")]
+    [Header("Bölüm 4: Deprem")]
     public AudioClip ses7_HayatUcgeni;
     public AudioClip ses8_DepremBasliyor;
 
-    [Header("Bölüm 5: Tahliye ve Sonuç")]
+    [Header("Bölüm 5: Sonuç")]
     public AudioClip ses9_Tahliye;
     public AudioClip ses10_Bitis;
 
-    [Header("Aktif Görev Durumu")]
+    [Header("Aktif Görev")]
     public GorevTipi aktifGorev = GorevTipi.None;
 
     private bool sabitlemeGoreviTamamlandi = false;
@@ -52,64 +50,95 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
+        GorevMetniGuncelle("Eðitim Yükleniyor...");
         StartCoroutine(EgitimAkisi());
     }
 
     IEnumerator EgitimAkisi()
     {
         // --- ADIM 1: GÝRÝÞ ---
+        GorevMetniGuncelle("Hoþgeldiniz\nSimülasyon Baþlatýlýyor");
         yield return StartCoroutine(SesCalVeBekle(ses1_Giris));
+
         yield return new WaitForSeconds(0.5f);
 
+        // --- ADIM 2: ORTAMI GEZME VE GERÝ SAYIM (YENÝLENEN KISIM) ---
+        // Önce ses çalsýn
+        GorevMetniGuncelle("Evi Tanýyýn\nEtrafýnýza Göz Atýn");
         yield return StartCoroutine(SesCalVeBekle(ses2_OrtamTanitim));
-        yield return new WaitForSeconds(1f);
 
-        // --- ADIM 2: EÞYA SABÝTLEME ---
-        // Sayacý sýfýrla ki garanti olsun
+        // Ses bittikten sonra 30 saniye geri sayým baþlasýn
+        float gezmeSuresi = 30f;
+        while (gezmeSuresi > 0)
+        {
+            // UI'ý her saniye güncelle
+            GorevMetniGuncelle($"Evi Tanýyýn\nEtrafýnýza Göz Atýn\nKalan Süre: {Mathf.CeilToInt(gezmeSuresi)}");
+
+            yield return new WaitForSeconds(1f); // 1 saniye bekle
+            gezmeSuresi--; // Süreyi azalt
+        }
+
+        // --- ADIM 3: EÞYA SABÝTLEME ---
         sabitlemeMevcutSayi = 0;
+        aktifGorev = GorevTipi.EsyaSabitleme;
+
+        GorevMetniGuncelle($"GÖREV 1:\nTehlikeli Eþyalarý Sabitle\n({sabitlemeMevcutSayi}/{sabitlemeHedefSayisi})");
 
         yield return StartCoroutine(SesCalVeBekle(ses3_SabitlemeGorevi));
 
-        aktifGorev = GorevTipi.EsyaSabitleme;
-
-        Debug.Log("Kullanýcýnýn 6 adet eþyayý sabitlemesi bekleniyor...");
-        // Görev deðiþkeni TRUE olana kadar burada bekler
+        Debug.Log("Sabitleme bekleniyor...");
         yield return new WaitUntil(() => sabitlemeGoreviTamamlandi);
 
         aktifGorev = GorevTipi.None;
+        GorevMetniGuncelle("TEBRÝKLER!\nTüm Eþyalar Sabitlendi");
 
         yield return StartCoroutine(SesCalVeBekle(ses4_SabitlemeBasarili));
         yield return new WaitForSeconds(1f);
 
-        // --- ADIM 3: ÇANTA HAZIRLAMA ---
-        cantaMevcutSayi = 0; // Çanta sayacýný sýfýrla
+        // --- ADIM 4: ÇANTA HAZIRLAMA ---
+        cantaMevcutSayi = 0;
+        aktifGorev = GorevTipi.CantaHazirlama;
+
+        GorevMetniGuncelle($"GÖREV 2:\nDeprem Çantasýný Hazýrla\n({cantaMevcutSayi}/{cantaHedefSayisi})");
 
         yield return StartCoroutine(SesCalVeBekle(ses5_CantaGorevi));
 
-        aktifGorev = GorevTipi.CantaHazirlama;
-
-        Debug.Log("Kullanýcýnýn çantayý hazýrlamasý bekleniyor...");
+        Debug.Log("Çanta bekleniyor...");
         yield return new WaitUntil(() => cantaGoreviTamamlandi);
 
         aktifGorev = GorevTipi.None;
+        GorevMetniGuncelle("HARÝKA!\nÇanta Hazýr");
 
         yield return StartCoroutine(SesCalVeBekle(ses6_CantaBasarili));
         yield return new WaitForSeconds(1f);
 
-        // --- ADIM 4: HAYAT ÜÇGENÝ VE DEPREM ---
+        // --- ADIM 5: HAYAT ÜÇGENÝ ---
+        // Burada da benzer bir geri sayým yapabiliriz (ses7'den sonra)
+        GorevMetniGuncelle("GÖREV 3:\nHayat Üçgeni Bölgesi Belirle");
         yield return StartCoroutine(SesCalVeBekle(ses7_HayatUcgeni));
-        Debug.Log("30 Saniye Hayat Üçgeni Arama Süresi...");
-        yield return new WaitForSeconds(30f);
 
+        float hayatUcgeniSuresi = 30f;
+        while (hayatUcgeniSuresi > 0)
+        {
+            GorevMetniGuncelle($"GÖREV 3:\nHayat Üçgeni Bölgesi Belirle\nKalan Süre: {Mathf.CeilToInt(hayatUcgeniSuresi)}");
+            yield return new WaitForSeconds(1f);
+            hayatUcgeniSuresi--;
+        }
+
+        // --- DEPREM ANI ---
+        GorevMetniGuncelle("DEPREM OLUYOR!\nÇÖK - KAPAN - TUTUN");
         yield return StartCoroutine(SesCalVeBekle(ses8_DepremBasliyor));
 
-        Debug.Log("Sarsýntýnýn bitmesi bekleniyor...");
+        Debug.Log("Sarsýntý bekleniyor...");
         yield return new WaitUntil(() => depremSarsintisiBitti);
 
-        // --- ADIM 5: TAHLÝYE VE SONUÇ ---
+        // --- ADIM 6: TAHLÝYE ---
         yield return new WaitForSeconds(2f);
+        GorevMetniGuncelle("Sakin Olun\nBinayý Güvenle Terk Edin");
         yield return StartCoroutine(SesCalVeBekle(ses9_Tahliye));
+
         yield return new WaitForSeconds(3f);
+        GorevMetniGuncelle("EÐÝTÝM TAMAMLANDI");
         yield return StartCoroutine(SesCalVeBekle(ses10_Bitis));
     }
 
@@ -122,18 +151,15 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    // --- GÜNCELLENEN FONKSÝYON ---
     public void GoreviIlerlet(GorevTipi gelenGorev)
     {
-        // Sadece aktif olan göreve ait bir iþlem yapýldýysa say
         if (aktifGorev != gelenGorev) return;
 
         if (gelenGorev == GorevTipi.EsyaSabitleme)
         {
-            sabitlemeMevcutSayi++; // Sayacý 1 artýr
-            Debug.Log($"Sabitleme Durumu: {sabitlemeMevcutSayi} / {sabitlemeHedefSayisi}");
+            sabitlemeMevcutSayi++;
+            GorevMetniGuncelle($"GÖREV 1:\nTehlikeli Eþyalarý Sabitle\n({sabitlemeMevcutSayi}/{sabitlemeHedefSayisi})");
 
-            // Hedefe ulaþtýk mý?
             if (sabitlemeMevcutSayi >= sabitlemeHedefSayisi)
             {
                 sabitlemeGoreviTamamlandi = true;
@@ -142,7 +168,7 @@ public class TutorialManager : MonoBehaviour
         else if (gelenGorev == GorevTipi.CantaHazirlama)
         {
             cantaMevcutSayi++;
-            Debug.Log($"Çanta Durumu: {cantaMevcutSayi} / {cantaHedefSayisi}");
+            GorevMetniGuncelle($"GÖREV 2:\nDeprem Çantasýný Hazýrla\n({cantaMevcutSayi}/{cantaHedefSayisi})");
 
             if (cantaMevcutSayi >= cantaHedefSayisi)
             {
@@ -151,15 +177,18 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    // Unity Event'leri bazen Enum yerine int göndermeyi sever, yedek fonksiyon:
+    void GorevMetniGuncelle(string yeniMetin)
+    {
+        if (gorevMetni != null)
+        {
+            gorevMetni.text = yeniMetin;
+        }
+    }
+
     public void GoreviIlerlet(int gelenGorevIndex)
     {
         GoreviIlerlet((GorevTipi)gelenGorevIndex);
     }
-
-    // Eski fonksiyon ismini kullanan yerler kýrýlmasýn diye bunu da tutabiliriz
-    // Ama Inspector'da yenisini seçeceðiz.
-    public void GoreviTamamla(GorevTipi t) => GoreviIlerlet(t);
 
     public void DepremBitti()
     {
