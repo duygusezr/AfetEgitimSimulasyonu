@@ -9,17 +9,30 @@ public class SimpleBagCollector : MonoBehaviour
     public Transform hidePoint;
     public float disappearDelay = 0.15f;
 
+    // --- YENÝ EKLENDÝ: Etiket Kontrolü ---
+    [Header("Filtre Ayarlarý")]
+    public string kabulEdilenTag = "CantayaGirebilir";
+    // Unity'de eþyalara bu Tag'i vermeyi unutmayýn!
+
     private TutorialManager tutorialManager;
 
     private void Start()
     {
-        // GÜNCELLENEN KISIM BURASI:
-        // FindObjectOfType yerine FindFirstObjectByType kullandýk.
+        // FindFirstObjectByType kullanýmý (Güncel ve doðru olan)
         tutorialManager = FindFirstObjectByType<TutorialManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        // --- 1. KONTROL: ETÝKET (TAG) DOÐRU MU? ---
+        if (!other.CompareTag(kabulEdilenTag))
+        {
+            // Eðer objenin etiketi "CantayaGirebilir" deðilse,
+            // iþlemi hemen durdur. (Yastýk, kitap vb. çantaya girmez)
+            return;
+        }
+        // ------------------------------------------
+
         XRGrabInteractable grab = other.GetComponent<XRGrabInteractable>();
 
         if (grab == null)
@@ -27,7 +40,7 @@ public class SimpleBagCollector : MonoBehaviour
 
         if (!other.gameObject.activeInHierarchy) return;
 
-        Debug.Log("Çanta ile temas eden eþya: " + other.name);
+        Debug.Log("Doðru eþya bulundu ve alýnýyor: " + other.name);
 
         StartCoroutine(CollectRoutine(other, grab));
     }

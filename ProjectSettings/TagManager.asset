@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - PlacementPoint
+  - CantayaGirebilir
+  - SabitlemeParcasi
   layers:
   - Default
   - TransparentFX

@@ -653,6 +653,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4961146890018249926, guid: d9d9f374cc51a6b4fb75751346d70b83, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5987332885971693606, guid: d9d9f374cc51a6b4fb75751346d70b83, type: 3}
       propertyPath: m_Name
       value: Cabinet_Base_SD_01 (2)
@@ -970,6 +974,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2738404820723936118, guid: 36510e737e626954986f2c5112be9091, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3743020621460257955, guid: 36510e737e626954986f2c5112be9091, type: 3}
       propertyPath: m_Name
       value: Cabinet_Wall_SD_01 (3)
@@ -1143,6 +1151,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: bracket (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_TagString
+      value: SabitlemeParcasi
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1244,7 +1260,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967295
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -2539,6 +2555,7 @@ GameObject:
   - component: {fileID: 154406165}
   - component: {fileID: 154406164}
   - component: {fileID: 154406163}
+  - component: {fileID: 154406168}
   m_Layer: 0
   m_Name: Sphere Drop Zone (2)
   m_TagString: Untagged
@@ -2615,8 +2632,10 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_StartingHoverFilters: []
-  m_StartingSelectFilters: []
+  m_StartingHoverFilters:
+  - {fileID: 154406168}
+  m_StartingSelectFilters:
+  - {fileID: 154406168}
   m_ShowInteractableHoverMeshes: 1
   m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 8f0c3d0f4c8740948ae14596896fb6cd, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
@@ -2718,6 +2737,19 @@ Transform:
   - {fileID: 1966981078}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &154406168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154406162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080275322d4fdd544989421e785316ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hedefTag: SabitlemeParcasi
 --- !u!1001 &160963797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2785,6 +2817,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
       propertyPath: m_Name
       value: bracket (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_TagString
+      value: SabitlemeParcasi
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2970,6 +3010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidePoint: {fileID: 833850237}
   disappearDelay: 0.15
+  kabulEdilenTag: CantayaGirebilir
 --- !u!1001 &202549240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3676,6 +3717,10 @@ PrefabInstance:
     - target: {fileID: 5820748979278948837, guid: 1a83256f7767c2c46a1371969648490c, type: 3}
       propertyPath: m_Name
       value: Cabinet_Base_Sink_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895661885431181520, guid: 1a83256f7767c2c46a1371969648490c, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8787687360872524886, guid: 1a83256f7767c2c46a1371969648490c, type: 3}
       propertyPath: m_Name
@@ -4655,6 +4700,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2738404820723936118, guid: 36510e737e626954986f2c5112be9091, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3743020621460257955, guid: 36510e737e626954986f2c5112be9091, type: 3}
       propertyPath: m_Name
       value: Cabinet_Wall_SD_01
@@ -4736,6 +4785,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
       propertyPath: m_Name
       value: bracket
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_TagString
+      value: SabitlemeParcasi
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5147,6 +5204,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: bracket (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_TagString
+      value: SabitlemeParcasi
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5172,6 +5237,10 @@ PrefabInstance:
     - target: {fileID: 1275266641364890, guid: e3109ccf9db0f54408d5c02b496761c1, type: 3}
       propertyPath: m_Name
       value: flashlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275266641364890, guid: e3109ccf9db0f54408d5c02b496761c1, type: 3}
+      propertyPath: m_TagString
+      value: CantayaGirebilir
       objectReference: {fileID: 0}
     - target: {fileID: 4153173015106888, guid: e3109ccf9db0f54408d5c02b496761c1, type: 3}
       propertyPath: m_LocalScale.x
@@ -5840,6 +5909,7 @@ GameObject:
   - component: {fileID: 363380842}
   - component: {fileID: 363380841}
   - component: {fileID: 363380840}
+  - component: {fileID: 363380845}
   m_Layer: 0
   m_Name: Sphere Drop Zone (1)
   m_TagString: Untagged
@@ -5916,8 +5986,10 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_StartingHoverFilters: []
-  m_StartingSelectFilters: []
+  m_StartingHoverFilters:
+  - {fileID: 154406168}
+  m_StartingSelectFilters:
+  - {fileID: 154406168}
   m_ShowInteractableHoverMeshes: 1
   m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 8f0c3d0f4c8740948ae14596896fb6cd, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
@@ -6019,6 +6091,19 @@ Transform:
   - {fileID: 229528101}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &363380845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363380839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080275322d4fdd544989421e785316ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hedefTag: SabitlemeParcasi
 --- !u!1001 &365258085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6030,6 +6115,10 @@ PrefabInstance:
     - target: {fileID: 277703759, guid: 48e9669af95ae5746aa4ad24d893f391, type: 3}
       propertyPath: Player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 706685894, guid: 48e9669af95ae5746aa4ad24d893f391, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1121460507, guid: 48e9669af95ae5746aa4ad24d893f391, type: 3}
       propertyPath: Player
@@ -6153,6 +6242,10 @@ PrefabInstance:
     - target: {fileID: 2483685999063698019, guid: 36510e737e626954986f2c5112be9091, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2738404820723936118, guid: 36510e737e626954986f2c5112be9091, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3743020621460257955, guid: 36510e737e626954986f2c5112be9091, type: 3}
       propertyPath: m_Name
@@ -6663,6 +6756,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4579037469988632223, guid: f072b6d5974d6a14da67d1db1cd20b92, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5820956380439161571, guid: f072b6d5974d6a14da67d1db1cd20b92, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -6740,6 +6837,10 @@ PrefabInstance:
     - target: {fileID: 1031967140, guid: 226aa234041d2be48881aab9632ea78e, type: 3}
       propertyPath: Player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305463942451076359, guid: 226aa234041d2be48881aab9632ea78e, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3667825465465734118, guid: 226aa234041d2be48881aab9632ea78e, type: 3}
       propertyPath: m_RootOrder
@@ -6882,6 +6983,10 @@ PrefabInstance:
     - target: {fileID: 4958267544043016039, guid: d9d9f374cc51a6b4fb75751346d70b83, type: 3}
       propertyPath: Player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961146890018249926, guid: d9d9f374cc51a6b4fb75751346d70b83, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5987332885971693606, guid: d9d9f374cc51a6b4fb75751346d70b83, type: 3}
       propertyPath: m_Name
@@ -7223,6 +7328,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pills
       objectReference: {fileID: 0}
+    - target: {fileID: 1985338178271116, guid: 48ec186542777474bb236dff1694340c, type: 3}
+      propertyPath: m_TagString
+      value: CantayaGirebilir
+      objectReference: {fileID: 0}
     - target: {fileID: 4624005263380358, guid: 48ec186542777474bb236dff1694340c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3
@@ -7471,7 +7580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967295
   m_Handedness: 2
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
@@ -8681,6 +8790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidePoint: {fileID: 833850237}
   disappearDelay: 0.15
+  kabulEdilenTag: CantayaGirebilir
 --- !u!1001 &595850688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9103,6 +9213,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: bracket (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_TagString
+      value: SabitlemeParcasi
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9327,6 +9445,7 @@ GameObject:
   - component: {fileID: 706990255}
   - component: {fileID: 706990254}
   - component: {fileID: 706990253}
+  - component: {fileID: 706990258}
   m_Layer: 0
   m_Name: Sphere Drop Zone (4)
   m_TagString: Untagged
@@ -9403,8 +9522,10 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_StartingHoverFilters: []
-  m_StartingSelectFilters: []
+  m_StartingHoverFilters:
+  - {fileID: 154406168}
+  m_StartingSelectFilters:
+  - {fileID: 154406168}
   m_ShowInteractableHoverMeshes: 1
   m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 8f0c3d0f4c8740948ae14596896fb6cd, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
@@ -9506,6 +9627,19 @@ Transform:
   - {fileID: 1424650880}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &706990258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706990252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080275322d4fdd544989421e785316ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hedefTag: SabitlemeParcasi
 --- !u!1 &711087539 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6742185029309522318, guid: 26b8166c4f06708408d1d04ab4ee35d8, type: 3}
@@ -9740,6 +9874,7 @@ GameObject:
   - component: {fileID: 724459832}
   - component: {fileID: 724459831}
   - component: {fileID: 724459830}
+  - component: {fileID: 724459835}
   m_Layer: 0
   m_Name: Sphere Drop Zone (5)
   m_TagString: Untagged
@@ -9816,8 +9951,10 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_StartingHoverFilters: []
-  m_StartingSelectFilters: []
+  m_StartingHoverFilters:
+  - {fileID: 154406168}
+  m_StartingSelectFilters:
+  - {fileID: 154406168}
   m_ShowInteractableHoverMeshes: 1
   m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 8f0c3d0f4c8740948ae14596896fb6cd, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
@@ -9919,6 +10056,19 @@ Transform:
   - {fileID: 749917046}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &724459835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724459829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080275322d4fdd544989421e785316ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hedefTag: SabitlemeParcasi
 --- !u!1 &727866832
 GameObject:
   m_ObjectHideFlags: 0
@@ -10636,6 +10786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: walkie
       objectReference: {fileID: 0}
+    - target: {fileID: 1756438538067288, guid: 9b7d674bd208a2a4aa6f2ff5594f9c95, type: 3}
+      propertyPath: m_TagString
+      value: CantayaGirebilir
+      objectReference: {fileID: 0}
     - target: {fileID: 4247995746445546, guid: 9b7d674bd208a2a4aa6f2ff5594f9c95, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3
@@ -11159,6 +11313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cabinet_Base_Corner_01
       objectReference: {fileID: 0}
+    - target: {fileID: 6447363312054082602, guid: 9e4d4910b774d1f48810a4fa933835c5, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9055458756796538670, guid: 9e4d4910b774d1f48810a4fa933835c5, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -11415,7 +11573,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967295
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -12185,6 +12343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidePoint: {fileID: 833850237}
   disappearDelay: 0.15
+  kabulEdilenTag: CantayaGirebilir
 --- !u!1001 &858306676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12252,6 +12411,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
       propertyPath: m_Name
       value: bracket (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_TagString
+      value: SabitlemeParcasi
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12508,6 +12675,10 @@ PrefabInstance:
     - target: {fileID: 1031967140, guid: 226aa234041d2be48881aab9632ea78e, type: 3}
       propertyPath: Player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305463942451076359, guid: 226aa234041d2be48881aab9632ea78e, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3667825465465734118, guid: 226aa234041d2be48881aab9632ea78e, type: 3}
       propertyPath: m_RootOrder
@@ -13055,6 +13226,10 @@ PrefabInstance:
     - target: {fileID: 4958267544043016039, guid: d9d9f374cc51a6b4fb75751346d70b83, type: 3}
       propertyPath: Player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961146890018249926, guid: d9d9f374cc51a6b4fb75751346d70b83, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5987332885971693606, guid: d9d9f374cc51a6b4fb75751346d70b83, type: 3}
       propertyPath: m_Name
@@ -13691,6 +13866,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2738404820723936118, guid: 36510e737e626954986f2c5112be9091, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3743020621460257955, guid: 36510e737e626954986f2c5112be9091, type: 3}
       propertyPath: m_Name
       value: Cabinet_Wall_SD_01 (2)
@@ -13872,7 +14051,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967295
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -15654,7 +15833,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967295
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -16141,6 +16320,10 @@ PrefabInstance:
     - target: {fileID: 1216505430168376, guid: 57e3542e6c16dfd40972c0b1b0899afb, type: 3}
       propertyPath: m_Name
       value: waterbottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216505430168376, guid: 57e3542e6c16dfd40972c0b1b0899afb, type: 3}
+      propertyPath: m_TagString
+      value: CantayaGirebilir
       objectReference: {fileID: 0}
     - target: {fileID: 4125389787687924, guid: 57e3542e6c16dfd40972c0b1b0899afb, type: 3}
       propertyPath: m_LocalScale.x
@@ -18369,6 +18552,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1796458219, guid: af872b04269986143906a126ca9ff444, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1949262247, guid: af872b04269986143906a126ca9ff444, type: 3}
       propertyPath: Player
       value: 
@@ -18861,6 +19048,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
       propertyPath: m_Name
       value: bracket (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_TagString
+      value: SabitlemeParcasi
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20152,6 +20347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidePoint: {fileID: 833850237}
   disappearDelay: 0.15
+  kabulEdilenTag: CantayaGirebilir
 --- !u!1001 &1451900586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20431,6 +20627,10 @@ PrefabInstance:
     - target: {fileID: 181523935, guid: d2d91ff190ebafa41b8fa852ad4c0f8c, type: 3}
       propertyPath: Player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 148921995703793567, guid: d2d91ff190ebafa41b8fa852ad4c0f8c, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3265179640249380063, guid: d2d91ff190ebafa41b8fa852ad4c0f8c, type: 3}
       propertyPath: m_Name
@@ -21650,7 +21850,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967295
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -21866,6 +22066,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2738404820723936118, guid: 36510e737e626954986f2c5112be9091, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3743020621460257955, guid: 36510e737e626954986f2c5112be9091, type: 3}
       propertyPath: m_Name
       value: Cabinet_Wall_SD_01 (4)
@@ -22000,7 +22204,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967295
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -22329,7 +22533,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967295
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -22862,6 +23066,7 @@ GameObject:
   - component: {fileID: 1684617938}
   - component: {fileID: 1684617937}
   - component: {fileID: 1684617936}
+  - component: {fileID: 1684617941}
   m_Layer: 0
   m_Name: Sphere Drop Zone
   m_TagString: Untagged
@@ -22938,8 +23143,10 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_StartingHoverFilters: []
-  m_StartingSelectFilters: []
+  m_StartingHoverFilters:
+  - {fileID: 154406168}
+  m_StartingSelectFilters:
+  - {fileID: 154406168}
   m_ShowInteractableHoverMeshes: 1
   m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 8f0c3d0f4c8740948ae14596896fb6cd, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
@@ -23041,6 +23248,19 @@ Transform:
   - {fileID: 1410944434}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1684617941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684617935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080275322d4fdd544989421e785316ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hedefTag: SabitlemeParcasi
 --- !u!1001 &1687449945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23248,7 +23468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967295
   m_Handedness: 1
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
@@ -23642,6 +23862,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2305463942451076359, guid: 226aa234041d2be48881aab9632ea78e, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3667825465465734118, guid: 226aa234041d2be48881aab9632ea78e, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -23974,7 +24198,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967295
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -24887,6 +25111,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4961146890018249926, guid: d9d9f374cc51a6b4fb75751346d70b83, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5987332885971693606, guid: d9d9f374cc51a6b4fb75751346d70b83, type: 3}
       propertyPath: m_Name
       value: Cabinet_Base_SD_01
@@ -25006,6 +25234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidePoint: {fileID: 833850237}
   disappearDelay: 0.15
+  kabulEdilenTag: CantayaGirebilir
 --- !u!1 &1842524857 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5357291655529466252, guid: 74ec0c569f1dd2744923b5ac0a7f687f, type: 3}
@@ -26766,6 +26995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidePoint: {fileID: 833850237}
   disappearDelay: 0.15
+  kabulEdilenTag: CantayaGirebilir
 --- !u!1 &1966981077
 GameObject:
   m_ObjectHideFlags: 0
@@ -27620,6 +27850,7 @@ GameObject:
   - component: {fileID: 2034727678}
   - component: {fileID: 2034727677}
   - component: {fileID: 2034727676}
+  - component: {fileID: 2034727681}
   m_Layer: 0
   m_Name: Sphere Drop Zone (3)
   m_TagString: Untagged
@@ -27696,8 +27927,10 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_StartingHoverFilters: []
-  m_StartingSelectFilters: []
+  m_StartingHoverFilters:
+  - {fileID: 154406168}
+  m_StartingSelectFilters:
+  - {fileID: 154406168}
   m_ShowInteractableHoverMeshes: 1
   m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 8f0c3d0f4c8740948ae14596896fb6cd, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
@@ -27799,6 +28032,19 @@ Transform:
   - {fileID: 111614760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2034727681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034727675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080275322d4fdd544989421e785316ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hedefTag: SabitlemeParcasi
 --- !u!1001 &2040436582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27939,6 +28185,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
       propertyPath: m_Name
       value: bracket (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14083eb5d9ce1ea47ba97119cc252043, type: 3}
+      propertyPath: m_TagString
+      value: SabitlemeParcasi
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28352,6 +28606,10 @@ PrefabInstance:
     - target: {fileID: 1896720402374228, guid: baa8d2066558c9a4ebcd1853c4c3ac4e, type: 3}
       propertyPath: m_Name
       value: cannedfood
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896720402374228, guid: baa8d2066558c9a4ebcd1853c4c3ac4e, type: 3}
+      propertyPath: m_TagString
+      value: CantayaGirebilir
       objectReference: {fileID: 0}
     - target: {fileID: 4582117764247738, guid: baa8d2066558c9a4ebcd1853c4c3ac4e, type: 3}
       propertyPath: m_LocalScale.x
