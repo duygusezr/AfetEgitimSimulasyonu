@@ -6,7 +6,8 @@ public enum GorevTipi
 {
     None,
     EsyaSabitleme,
-    CantaHazirlama
+    CantaHazirlama,
+    DepremAni
 }
 
 public class TutorialManager : MonoBehaviour
@@ -17,11 +18,18 @@ public class TutorialManager : MonoBehaviour
     [Header("Ses Kaynaðý")]
     public AudioSource sesKaynagi;
 
+    [Header("Sistemler")]
+    public DepremSistemi depremSistemi;
+
+    // YENÝ: Sahnedeki güvenli alan kutularýný buraya atacaðýz
+    [Header("Güvenli Alan Kutularý")]
+    public GameObject[] guvenliAlanKutulari;
+
     [Header("Bölüm 1: Giriþ")]
     public AudioClip ses1_Giris;
     public AudioClip ses2_OrtamTanitim;
 
-    [Header("Bölüm 2: Risk Avý (Sabitleme)")]
+    [Header("Bölüm 2: Risk Avý")]
     public AudioClip ses3_SabitlemeGorevi;
     public AudioClip ses4_SabitlemeBasarili;
     public int sabitlemeHedefSayisi = 6;
@@ -46,12 +54,26 @@ public class TutorialManager : MonoBehaviour
 
     private bool sabitlemeGoreviTamamlandi = false;
     private bool cantaGoreviTamamlandi = false;
-    private bool depremSarsintisiBitti = false;
+    private bool oyuncuGuvende = false;
 
     void Start()
     {
+        // YENÝ: Oyun baþlar baþlamaz güvenli alan kutularýný GÝZLE
+        if (guvenliAlanKutulari != null)
+        {
+            foreach (GameObject kutu in guvenliAlanKutulari)
+            {
+                if (kutu != null) kutu.SetActive(false);
+            }
+        }
+
         GorevMetniGuncelle("Eðitim Yükleniyor...");
         StartCoroutine(EgitimAkisi());
+    }
+
+    public void OyuncuGuvenliAlandaDurumu(bool durum)
+    {
+        oyuncuGuvende = durum;
     }
 
     IEnumerator EgitimAkisi()
@@ -59,63 +81,60 @@ public class TutorialManager : MonoBehaviour
         // --- ADIM 1: GÝRÝÞ ---
         GorevMetniGuncelle("Hoþgeldiniz\nSimülasyon Baþlatýlýyor");
         yield return StartCoroutine(SesCalVeBekle(ses1_Giris));
-
         yield return new WaitForSeconds(0.5f);
 
-        // --- ADIM 2: ORTAMI GEZME VE GERÝ SAYIM (YENÝLENEN KISIM) ---
-        // Önce ses çalsýn
+        // --- ADIM 2: ORTAMI GEZME ---
         GorevMetniGuncelle("Evi Tanýyýn\nEtrafýnýza Göz Atýn");
         yield return StartCoroutine(SesCalVeBekle(ses2_OrtamTanitim));
 
-        // Ses bittikten sonra 30 saniye geri sayým baþlasýn
         float gezmeSuresi = 30f;
         while (gezmeSuresi > 0)
         {
-            // UI'ý her saniye güncelle
             GorevMetniGuncelle($"Evi Tanýyýn\nEtrafýnýza Göz Atýn\nKalan Süre: {Mathf.CeilToInt(gezmeSuresi)}");
-
-            yield return new WaitForSeconds(1f); // 1 saniye bekle
-            gezmeSuresi--; // Süreyi azalt
+            yield return new WaitForSeconds(1f);
+            gezmeSuresi--;
         }
 
         // --- ADIM 3: EÞYA SABÝTLEME ---
         sabitlemeMevcutSayi = 0;
         aktifGorev = GorevTipi.EsyaSabitleme;
-
         GorevMetniGuncelle($"GÖREV 1:\nTehlikeli Eþyalarý Sabitle\n({sabitlemeMevcutSayi}/{sabitlemeHedefSayisi})");
 
         yield return StartCoroutine(SesCalVeBekle(ses3_SabitlemeGorevi));
-
-        Debug.Log("Sabitleme bekleniyor...");
         yield return new WaitUntil(() => sabitlemeGoreviTamamlandi);
 
         aktifGorev = GorevTipi.None;
         GorevMetniGuncelle("TEBRÝKLER!\nTüm Eþyalar Sabitlendi");
-
         yield return StartCoroutine(SesCalVeBekle(ses4_SabitlemeBasarili));
         yield return new WaitForSeconds(1f);
 
         // --- ADIM 4: ÇANTA HAZIRLAMA ---
         cantaMevcutSayi = 0;
         aktifGorev = GorevTipi.CantaHazirlama;
-
         GorevMetniGuncelle($"GÖREV 2:\nDeprem Çantasýný Hazýrla\n({cantaMevcutSayi}/{cantaHedefSayisi})");
 
         yield return StartCoroutine(SesCalVeBekle(ses5_CantaGorevi));
-
-        Debug.Log("Çanta bekleniyor...");
         yield return new WaitUntil(() => cantaGoreviTamamlandi);
 
         aktifGorev = GorevTipi.None;
         GorevMetniGuncelle("HARÝKA!\nÇanta Hazýr");
-
         yield return StartCoroutine(SesCalVeBekle(ses6_CantaBasarili));
         yield return new WaitForSeconds(1f);
 
-        // --- ADIM 5: HAYAT ÜÇGENÝ ---
-        // Burada da benzer bir geri sayým yapabiliriz (ses7'den sonra)
-        GorevMetniGuncelle("GÖREV 3:\nHayat Üçgeni Bölgesi Belirle");
+        // --- ADIM 5: HAYAT ÜÇGENÝ ARAMA ---
+        GorevMetniGuncelle("GÖREV 3:\nHayat Üçgeni Bölgesi Belirle\n(Masa Altý / Koltuk Yaný)");
+
+        // Önce "Güvenli Alanlarý Bulun" sesi çalsýn
         yield return StartCoroutine(SesCalVeBekle(ses7_HayatUcgeni));
+
+        // YENÝ: Ses bittikten sonra kutularý GÖRÜNÜR YAP
+        if (guvenliAlanKutulari != null)
+        {
+            foreach (GameObject kutu in guvenliAlanKutulari)
+            {
+                if (kutu != null) kutu.SetActive(true);
+            }
+        }
 
         float hayatUcgeniSuresi = 30f;
         while (hayatUcgeniSuresi > 0)
@@ -126,14 +145,33 @@ public class TutorialManager : MonoBehaviour
         }
 
         // --- DEPREM ANI ---
-        GorevMetniGuncelle("DEPREM OLUYOR!\nÇÖK - KAPAN - TUTUN");
-        yield return StartCoroutine(SesCalVeBekle(ses8_DepremBasliyor));
+        aktifGorev = GorevTipi.DepremAni;
 
-        Debug.Log("Sarsýntý bekleniyor...");
-        yield return new WaitUntil(() => depremSarsintisiBitti);
+        if (ses8_DepremBasliyor != null) sesKaynagi.PlayOneShot(ses8_DepremBasliyor);
+
+        float sarsintiSuresi = 20f;
+        if (depremSistemi != null) depremSistemi.DepremiBaslat(sarsintiSuresi);
+
+        float kalanSarsinti = sarsintiSuresi;
+        while (kalanSarsinti > 0)
+        {
+            if (oyuncuGuvende)
+            {
+                GorevMetniGuncelle($"<color=green>GÜVENDESÝNÝZ!</color>\nSarsýntý Geçene Kadar Bekleyin\n({Mathf.CeilToInt(kalanSarsinti)})");
+            }
+            else
+            {
+                GorevMetniGuncelle($"<color=red>TEHLÝKEDESÝNÝZ!</color>\nMasa Altýna Girin!\nÇÖK - KAPAN - TUTUN\n({Mathf.CeilToInt(kalanSarsinti)})");
+            }
+
+            yield return new WaitForSeconds(0.2f);
+            kalanSarsinti -= 0.2f;
+        }
 
         // --- ADIM 6: TAHLÝYE ---
         yield return new WaitForSeconds(2f);
+
+        aktifGorev = GorevTipi.None;
         GorevMetniGuncelle("Sakin Olun\nBinayý Güvenle Terk Edin");
         yield return StartCoroutine(SesCalVeBekle(ses9_Tahliye));
 
@@ -159,39 +197,23 @@ public class TutorialManager : MonoBehaviour
         {
             sabitlemeMevcutSayi++;
             GorevMetniGuncelle($"GÖREV 1:\nTehlikeli Eþyalarý Sabitle\n({sabitlemeMevcutSayi}/{sabitlemeHedefSayisi})");
-
-            if (sabitlemeMevcutSayi >= sabitlemeHedefSayisi)
-            {
-                sabitlemeGoreviTamamlandi = true;
-            }
+            if (sabitlemeMevcutSayi >= sabitlemeHedefSayisi) sabitlemeGoreviTamamlandi = true;
         }
         else if (gelenGorev == GorevTipi.CantaHazirlama)
         {
             cantaMevcutSayi++;
             GorevMetniGuncelle($"GÖREV 2:\nDeprem Çantasýný Hazýrla\n({cantaMevcutSayi}/{cantaHedefSayisi})");
-
-            if (cantaMevcutSayi >= cantaHedefSayisi)
-            {
-                cantaGoreviTamamlandi = true;
-            }
+            if (cantaMevcutSayi >= cantaHedefSayisi) cantaGoreviTamamlandi = true;
         }
     }
 
     void GorevMetniGuncelle(string yeniMetin)
     {
-        if (gorevMetni != null)
-        {
-            gorevMetni.text = yeniMetin;
-        }
+        if (gorevMetni != null) gorevMetni.text = yeniMetin;
     }
 
     public void GoreviIlerlet(int gelenGorevIndex)
     {
         GoreviIlerlet((GorevTipi)gelenGorevIndex);
-    }
-
-    public void DepremBitti()
-    {
-        depremSarsintisiBitti = true;
     }
 }
