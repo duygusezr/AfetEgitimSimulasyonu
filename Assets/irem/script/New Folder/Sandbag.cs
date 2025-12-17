@@ -20,8 +20,6 @@ public class Sandbag : MonoBehaviour
     }
     public void SnapToSlot(Transform slotPoint)
     {
-        Debug.Log("SNAP CALLED");
-
         isCarried = false;
 
         rb.isKinematic = true;
