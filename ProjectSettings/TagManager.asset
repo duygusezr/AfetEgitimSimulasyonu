@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - PlacementPoint
+  - Sandbag
   layers:
   - Default
   - TransparentFX
