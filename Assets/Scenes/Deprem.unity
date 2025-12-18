@@ -12662,6 +12662,18 @@ MonoBehaviour:
   ses8_DepremBasliyor: {fileID: 8300000, guid: 74a6c6ef303d2af43935bb3bc30d39ed, type: 3}
   ses9_Tahliye: {fileID: 8300000, guid: aeb3a0ad645ecd346994b388da713936, type: 3}
   ses10_Bitis: {fileID: 8300000, guid: 67bc0fc9db85f9643a49a6cccca6a5b6, type: 3}
+  ses1_Giris: {fileID: 8300000, guid: bb12ee543ada3824780aff7ac41e528a, type: 3}
+  ses2_OrtamTanitim: {fileID: 8300000, guid: 4b1d8235429b6b34ab07df9f32e63ac3, type: 3}
+  ses3_SabitlemeGorevi: {fileID: 8300000, guid: 4ef299e57999ba040a1e90a7ffc4b7ba, type: 3}
+  ses4_SabitlemeBasarili: {fileID: 8300000, guid: 080a6d3098a20564b9740fa0dea09bbf, type: 3}
+  sabitlemeHedefSayisi: 6
+  ses5_CantaGorevi: {fileID: 8300000, guid: 3be0411aaaf26be488bc9083793157fd, type: 3}
+  ses6_CantaBasarili: {fileID: 8300000, guid: e41de144f6bed5f408687fde213c44a2, type: 3}
+  cantaHedefSayisi: 5
+  ses7_HayatUcgeni: {fileID: 8300000, guid: 52e87bc14eb3d3249850eb334292b0e2, type: 3}
+  ses8_DepremBasliyor: {fileID: 8300000, guid: 20951b925838e4f4a822de328cda0dc8, type: 3}
+  ses9_Tahliye: {fileID: 8300000, guid: 908005a5bf9ba374f822cd8839083532, type: 3}
+  ses10_Bitis: {fileID: 8300000, guid: ef791c1ee0c84c446bcbbb5c300c194b, type: 3}
   aktifGorev: 1
 --- !u!4 &1143632377
 Transform:
