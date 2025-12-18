@@ -12650,6 +12650,18 @@ MonoBehaviour:
   - {fileID: 546094689}
   - {fileID: 1612283823}
   - {fileID: 2083740225}
+  ses1_Giris: {fileID: 8300000, guid: 19cc8e311914ca947aab4d0ffb637ea5, type: 3}
+  ses2_OrtamTanitim: {fileID: 8300000, guid: 2cdfe1b662df7c34fbc9ea7cfda76e7b, type: 3}
+  ses3_SabitlemeGorevi: {fileID: 8300000, guid: d9952f6d99430284c881325c469b40db, type: 3}
+  ses4_SabitlemeBasarili: {fileID: 8300000, guid: 1d1425d3b806dc247a5f42ae546fab78, type: 3}
+  sabitlemeHedefSayisi: 6
+  ses5_CantaGorevi: {fileID: 8300000, guid: 6c1c00a9d5d1a5145b99e53a9464ae13, type: 3}
+  ses6_CantaBasarili: {fileID: 8300000, guid: aaafed5f21d568340b434ee439c9e506, type: 3}
+  cantaHedefSayisi: 5
+  ses7_HayatUcgeni: {fileID: 8300000, guid: 1aee116ab0ce70b4f83e094f16357992, type: 3}
+  ses8_DepremBasliyor: {fileID: 8300000, guid: 74a6c6ef303d2af43935bb3bc30d39ed, type: 3}
+  ses9_Tahliye: {fileID: 8300000, guid: aeb3a0ad645ecd346994b388da713936, type: 3}
+  ses10_Bitis: {fileID: 8300000, guid: 67bc0fc9db85f9643a49a6cccca6a5b6, type: 3}
   ses1_Giris: {fileID: 8300000, guid: bb12ee543ada3824780aff7ac41e528a, type: 3}
   ses2_OrtamTanitim: {fileID: 8300000, guid: 4b1d8235429b6b34ab07df9f32e63ac3, type: 3}
   ses3_SabitlemeGorevi: {fileID: 8300000, guid: 4ef299e57999ba040a1e90a7ffc4b7ba, type: 3}
@@ -24856,6 +24868,63 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.0244255, y: 3.7497606, z: 1}
   m_Center: {x: 2.6601408, y: 1.3748794, z: -9.381171e-15}
+--- !u!1001 &1213897193694114411
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3942344968061443006, guid: b9631550545b9874d9a244d990c20ca8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.0899482
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942344968061443006, guid: b9631550545b9874d9a244d990c20ca8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000023841858
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942344968061443006, guid: b9631550545b9874d9a244d990c20ca8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.395517
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942344968061443006, guid: b9631550545b9874d9a244d990c20ca8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942344968061443006, guid: b9631550545b9874d9a244d990c20ca8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942344968061443006, guid: b9631550545b9874d9a244d990c20ca8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942344968061443006, guid: b9631550545b9874d9a244d990c20ca8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942344968061443006, guid: b9631550545b9874d9a244d990c20ca8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942344968061443006, guid: b9631550545b9874d9a244d990c20ca8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942344968061443006, guid: b9631550545b9874d9a244d990c20ca8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466961086493065476, guid: b9631550545b9874d9a244d990c20ca8, type: 3}
+      propertyPath: m_Name
+      value: "AnaMen\xFCye D\xF6nme"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b9631550545b9874d9a244d990c20ca8, type: 3}
 --- !u!1001 &7282821866870600827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24965,3 +25034,4 @@ SceneRoots:
   - {fileID: 546094694}
   - {fileID: 1612283828}
   - {fileID: 2083740230}
+  - {fileID: 1213897193694114411}

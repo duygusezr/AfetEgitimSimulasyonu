@@ -9,8 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Main VR Scene.unity
+    path: Assets/Scenes/Main Menu.unity
+    guid: 50d4538412140ca459c9bed33ad83a26
+  - enabled: 1
+    path: Assets/Scenes/Deprem.unity
     guid: 49c122f69a33b4542b66e3ad90eaa27e
+  - enabled: 1
+    path: Assets/Scenes/Sel.unity
+    guid: 88e6878945272304da7d6f0eaeb0f95d
+  - enabled: 1
+    path: "Assets/Scenes/Yang\u0131n.unity"
+    guid: 023da84b6f4ef6943b1907238a78ec5d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 6518fd661b663814cbf9a9ce8a477c09, type: 2}
