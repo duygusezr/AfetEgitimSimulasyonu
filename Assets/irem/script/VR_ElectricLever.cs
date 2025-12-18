@@ -7,8 +7,8 @@ public class VR_ElectricLever : MonoBehaviour
     public float offAngle = -60f;
 
     [Header("Optional Fire Logic")]
-    public bool useFireLock = false; // 🔥 sadece elektrik yangını olan sahnede aç
-    
+    public bool useFireLock = false; // 🔥 elektrik yangını varsa AÇ
+
     XRGrabInteractable grab;
     bool isOff = false;
     Vector3 initialRotation;
@@ -36,9 +36,12 @@ public class VR_ElectricLever : MonoBehaviour
         // Kolu indir
         transform.Rotate(offAngle, 0f, 0f, Space.Self);
 
-        // Normal sahnede tek kullanımlık
+        // 🔑 YANGIN YOKSA → görev tamamla (ESKİ DAVRANIŞ)
         if (!useFireLock)
+        {
             grab.enabled = false;
+            GameManager.Instance.CompleteTask();
+        }
 
         Debug.Log("Elektrik kesildi");
     }
