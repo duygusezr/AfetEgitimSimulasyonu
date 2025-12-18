@@ -4,60 +4,35 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class FireExtinguisherController : MonoBehaviour
 {
-    public ExtinguisherType extinguisherType;
+    [Header("Extinguisher Type")]
+    public ExtinguisherType extinguisherType; // Inspector’dan seçilir
 
+    [Header("Spray")]
     public ParticleSystem sprayParticles;
     public AudioSource spraySound;
     public Transform sprayPoint;
-
     public float sprayRange = 3f;
+
+    [Header("Fire Detection")]
     public LayerMask fireLayer;
-
-    [Header("Score Settings")]
-    private int correctScoreAmount = +5;
-    private int wrongScoreAmount = -2;
-
-    private float correctScoreCooldown = 0.7f;
-    private float wrongScoreCooldown = 0.7f;
-
-    float lastCorrectScoreTime;
-    float lastWrongScoreTime;
 
     XRGrabInteractable grab;
     bool isSpraying;
 
     void Awake()
-{
-    grab = GetComponent<XRGrabInteractable>();
+    {
+        grab = GetComponent<XRGrabInteractable>();
 
-    // Trigger (arka tuş)
-    grab.activated.AddListener(OnActivate);
-    grab.deactivated.AddListener(OnDeactivate);
-
-    // Grip (yan tuş) bırakılınca
-    grab.selectExited.AddListener(OnSelectExit);
-}
-
+        grab.activated.AddListener(OnActivate);
+        grab.deactivated.AddListener(OnDeactivate);
+        grab.selectExited.AddListener(OnSelectExit);
+    }
 
     void OnDestroy()
     {
         grab.activated.RemoveListener(OnActivate);
         grab.deactivated.RemoveListener(OnDeactivate);
-    }
-
-    void OnSelectExit(SelectExitEventArgs args)
-    {
-        // Yandaki tuş bırakıldıysa sprey ZORLA dursun
-        ForceStopSpray();
-    }
-
-    void ForceStopSpray()
-    {
-        if (!isSpraying) return;
-
-        isSpraying = false;
-        sprayParticles.Stop();
-        spraySound.Stop();
+        grab.selectExited.RemoveListener(OnSelectExit);
     }
 
     void Update()
@@ -78,6 +53,19 @@ public class FireExtinguisherController : MonoBehaviour
         ForceStopSpray();
     }
 
+    void OnSelectExit(SelectExitEventArgs args)
+    {
+        ForceStopSpray();
+    }
+
+    void ForceStopSpray()
+    {
+        if (!isSpraying) return;
+
+        isSpraying = false;
+        sprayParticles.Stop();
+        spraySound.Stop();
+    }
 
     void CheckFireHit()
     {
@@ -87,27 +75,21 @@ public class FireExtinguisherController : MonoBehaviour
         if (!Physics.Raycast(ray, out RaycastHit hit, sprayRange, fireLayer))
             return;
 
-        Fire fire = hit.collider.GetComponent<Fire>();
-        if (fire == null || !fire.IsAlive)
+        // 🔌 Elektrik yangını
+        ElectricFire electricFire = hit.collider.GetComponent<ElectricFire>();
+        if (electricFire != null)
+        {
+            electricFire.TryExtinguish(Time.deltaTime, extinguisherType);
             return;
-
-        if (fire.CanBeExtinguishedBy(extinguisherType))
-        {
-            if (Time.time - lastCorrectScoreTime > correctScoreCooldown)
-            {
-                ScoreManager.Instance.AddScore(correctScoreAmount);
-                lastCorrectScoreTime = Time.time;
-            }
-
-            fire.Extinguish(Time.deltaTime);
         }
-        else
+
+        // 🔥 Normal yangın
+        Fire fire = hit.collider.GetComponent<Fire>();
+        if (fire != null)
         {
-            if (Time.time - lastWrongScoreTime > wrongScoreCooldown)
-            {
-                ScoreManager.Instance.AddScore(wrongScoreAmount);
-                lastWrongScoreTime = Time.time;
-            }
+            fire.TryExtinguish(Time.deltaTime, extinguisherType);
+            return;
         }
     }
+
 }

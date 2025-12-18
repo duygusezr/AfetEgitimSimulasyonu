@@ -6,13 +6,19 @@ public class VR_ElectricLever : MonoBehaviour
 {
     public float offAngle = -60f;
 
-    private XRGrabInteractable grab;
-    private bool isOff = false;
+    [Header("Optional Fire Logic")]
+    public bool useFireLock = false; // 🔥 sadece elektrik yangını olan sahnede aç
+    
+    XRGrabInteractable grab;
+    bool isOff = false;
+    Vector3 initialRotation;
 
     void Awake()
     {
         grab = GetComponent<XRGrabInteractable>();
         grab.selectEntered.AddListener(OnGrab);
+
+        initialRotation = transform.localEulerAngles;
     }
 
     void OnDestroy()
@@ -21,19 +27,36 @@ public class VR_ElectricLever : MonoBehaviour
             grab.selectEntered.RemoveListener(OnGrab);
     }
 
-    private void OnGrab(SelectEnterEventArgs args)
+    void OnGrab(SelectEnterEventArgs args)
     {
         if (isOff) return;
 
         isOff = true;
 
-        // 🔴 EN BASİT, EN GARANTİ
+        // Kolu indir
         transform.Rotate(offAngle, 0f, 0f, Space.Self);
 
-        grab.enabled = false;
-
-        GameManager.Instance.CompleteTask();
+        // Normal sahnede tek kullanımlık
+        if (!useFireLock)
+            grab.enabled = false;
 
         Debug.Log("Elektrik kesildi");
+    }
+
+    // 🔁 Elektrik yangını söndüğünde çağrılır
+    public void ResetLever()
+    {
+        if (!useFireLock) return;
+
+        transform.localEulerAngles = initialRotation;
+        isOff = false;
+        grab.enabled = true;
+    }
+
+    public bool IsPowerOff()
+    {
+        float x = transform.localEulerAngles.x;
+        if (x > 180f) x -= 360f;
+        return Mathf.Abs(x - offAngle) < 5f;
     }
 }

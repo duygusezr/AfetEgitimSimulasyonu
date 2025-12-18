@@ -1,29 +1,45 @@
 using UnityEngine;
 
-public enum FireType { A, B, C, F, Gas, D }
+public enum FireType { A, B, F }
 
 public class Fire : MonoBehaviour
 {
     public FireType fireType;
     public float health = 3f;
 
-    [Header("Score Penalty While Fire Is Alive")]
+    [Header("Alive Penalty")]
     public float alivePenaltyInterval = 1.5f;
     public int alivePenaltyAmount = -1;
 
-    float lastAlivePenaltyTime;
+    [Header("Extinguish Reward")]
+    public int extinguishReward = +10;
+
+    [Header("Wrong Extinguisher Penalty")]
+    public int wrongExtinguisherPenalty = -2;
+    public float wrongPenaltyCooldown = 0.8f;
+
+    float lastPenaltyTime;
+    float lastWrongPenaltyTime;
+    bool isActiveFire = false;
 
     public bool IsAlive => health > 0;
 
+    // 🔑 Spawner çağırmak zorunda
+    public void ActivateFire()
+    {
+        isActiveFire = true;
+        lastPenaltyTime = Time.time;
+    }
+
     void Update()
     {
-        if (!IsAlive) return;
+        if (!isActiveFire || !IsAlive) return;
 
-        // 🔥 Yangın oyunda durduğu sürece ceza
-        if (Time.time - lastAlivePenaltyTime > alivePenaltyInterval)
+        // 🔥 Yangın durdukça ceza
+        if (Time.time - lastPenaltyTime > alivePenaltyInterval)
         {
             ScoreManager.Instance.AddScore(alivePenaltyAmount);
-            lastAlivePenaltyTime = Time.time;
+            lastPenaltyTime = Time.time;
         }
     }
 
@@ -40,17 +56,7 @@ public class Fire : MonoBehaviour
                 return extinguisher == ExtinguisherType.Foam ||
                        extinguisher == ExtinguisherType.DryChemical;
 
-            case FireType.C:
-                return extinguisher == ExtinguisherType.CO2 ||
-                       extinguisher == ExtinguisherType.DryChemical;
-
             case FireType.F:
-                return extinguisher == ExtinguisherType.DryChemical;
-
-            case FireType.D:
-                return extinguisher == ExtinguisherType.MetalPowder;
-
-            case FireType.Gas:
                 return extinguisher == ExtinguisherType.DryChemical;
 
             default:
@@ -58,11 +64,34 @@ public class Fire : MonoBehaviour
         }
     }
 
-    public void Extinguish(float amount)
+    public void TryExtinguish(float amount, ExtinguisherType extinguisherType)
     {
+        if (!isActiveFire) return;
+
+        // ❌ Yanlış tüp
+        if (!CanBeExtinguishedBy(extinguisherType))
+        {
+            ApplyWrongPenalty();
+            return;
+        }
+
+        // ✅ Doğru tüp
         health -= amount;
 
         if (health <= 0)
+        {
+            ScoreManager.Instance.AddScore(extinguishReward);
             Destroy(gameObject);
+        }
+    }
+
+    void ApplyWrongPenalty()
+    {
+        // ❗ Spam olmasın
+        if (Time.time - lastWrongPenaltyTime > wrongPenaltyCooldown)
+        {
+            ScoreManager.Instance.AddScore(wrongExtinguisherPenalty);
+            lastWrongPenaltyTime = Time.time;
+        }
     }
 }

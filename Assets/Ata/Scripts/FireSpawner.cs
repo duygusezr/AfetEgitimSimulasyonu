@@ -26,14 +26,13 @@ public class FireSpawner : MonoBehaviour
 
     void TrySpawnFire()
     {
-        // Aktif yangın sayısı limitin üstündeyse spawn etme
+        // Aktif yangın sayısı limiti
         if (CurrentActiveFireCount() >= maxActiveFires)
             return;
 
         if (firePoints == null || firePoints.Length == 0)
             return;
 
-        // Rastgele bir point seç, uygun değilse birkaç kez dene
         const int maxTries = 10;
         for (int i = 0; i < maxTries; i++)
         {
@@ -42,18 +41,35 @@ public class FireSpawner : MonoBehaviour
             if (point == null) continue;
             if (point.HasActiveFire) continue;
 
-            GameObject fire = point.SpawnRandomFire();
-            if (fire != null)
+            GameObject fireGO = point.SpawnRandomFire();
+            if (fireGO == null) continue;
+
+            // 🔥 NORMAL YANGIN
+            Fire normalFire = fireGO.GetComponent<Fire>();
+            if (normalFire != null)
             {
-                // Başarılı spawn, çık
+                normalFire.ActivateFire();   // 🔑 ceza artık buradan başlar
                 return;
             }
+
+            // 🔌 ELEKTRİK YANGINI
+            ElectricFire electricFire = fireGO.GetComponent<ElectricFire>();
+            if (electricFire != null)
+            {
+                electricFire.ActivateFire(); // 🔑 ceza artık buradan başlar
+                return;
+            }
+
+            // Eğer ikisi de yoksa (hatalı prefab)
+            Debug.LogWarning(
+                $"Spawn edilen objede Fire veya ElectricFire yok: {fireGO.name}"
+            );
+            return;
         }
     }
 
     int CurrentActiveFireCount()
     {
-        // Tüm yangın prefab’larına "Fire" tag’ini verirsen:
         return GameObject.FindGameObjectsWithTag("Fire").Length;
     }
 }

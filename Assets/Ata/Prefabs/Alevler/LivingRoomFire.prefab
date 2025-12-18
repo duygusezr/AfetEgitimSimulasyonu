@@ -24340,6 +24340,7 @@ MonoBehaviour:
   health: 3
   alivePenaltyInterval: 1.5
   alivePenaltyAmount: -1
+  extinguishReward: 10
 --- !u!65 &-6873284736572280805
 BoxCollider:
   m_ObjectHideFlags: 0
