@@ -260,15 +260,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cbe901c534fac324b9a0e1c87356397a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.0899482
+      value: -6.9282
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cbe901c534fac324b9a0e1c87356397a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000023841858
+      value: 0.69185174
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cbe901c534fac324b9a0e1c87356397a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.395517
+      value: 8.007437
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cbe901c534fac324b9a0e1c87356397a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -348,6 +348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d798c386b87f349b6fdae559ae4328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuSceneName: Main Menu
+  holdDuration: 1
 --- !u!65 &4076946956062264891
 BoxCollider:
   m_ObjectHideFlags: 0

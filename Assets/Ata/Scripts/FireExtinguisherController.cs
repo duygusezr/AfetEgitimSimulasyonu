@@ -76,7 +76,7 @@ public class FireExtinguisherController : MonoBehaviour
             return;
 
         // 🔌 Elektrik yangını
-        ElectricFire electricFire = hit.collider.GetComponent<ElectricFire>();
+        ElectricFire electricFire = hit.collider.GetComponentInParent<ElectricFire>();
         if (electricFire != null)
         {
             electricFire.TryExtinguish(Time.deltaTime, extinguisherType);
@@ -84,12 +84,13 @@ public class FireExtinguisherController : MonoBehaviour
         }
 
         // 🔥 Normal yangın
-        Fire fire = hit.collider.GetComponent<Fire>();
+        Fire fire = hit.collider.GetComponentInParent<Fire>();
         if (fire != null)
         {
             fire.TryExtinguish(Time.deltaTime, extinguisherType);
             return;
         }
     }
+
 
 }

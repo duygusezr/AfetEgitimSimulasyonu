@@ -4,6 +4,9 @@ public class ElectricFire : MonoBehaviour
 {
     [Header("Fire Settings")]
     public float health = 3f;
+
+    [Header("Auto Find Lever")]
+    public string mainKnobName = "Main Knob"; // 👈 SAHNEDEKİ OBJENİN ADI
     public VR_ElectricLever electricLever;
 
     [Header("Score While Alive")]
@@ -20,22 +23,39 @@ public class ElectricFire : MonoBehaviour
     float lastAlivePenaltyTime;
     float lastWrongActionTime;
 
-    bool isActiveFire = false; // 🔑 KRİTİK
+    bool isActiveFire = false;
 
     bool IsAlive => health > 0;
 
-    // 🔥 Spawner yangını oluşturduğunda çağır
+    // 🔥 Spawner çağırır
     public void ActivateFire()
     {
         isActiveFire = true;
         lastAlivePenaltyTime = Time.time;
     }
 
+    void Awake()
+    {
+        // 🔌 SAHNEDE "Main Knob" ALTINDAN VR_ElectricLever BUL
+        GameObject knob = GameObject.Find(mainKnobName);
+        if (knob != null)
+        {
+            electricLever = knob.GetComponentInChildren<VR_ElectricLever>();
+        }
+
+        if (electricLever == null)
+        {
+            Debug.LogError(
+                $"[ElectricFire] '{mainKnobName}' altında VR_ElectricLever bulunamadı!"
+            );
+        }
+    }
+
     void Update()
     {
         if (!isActiveFire || !IsAlive) return;
 
-        // 🔥 Yangın oyunda durdukça ceza
+        // 🔥 Yangın durdukça ceza
         if (Time.time - lastAlivePenaltyTime > alivePenaltyInterval)
         {
             ScoreManager.Instance.AddScore(alivePenaltyAmount);
@@ -48,7 +68,7 @@ public class ElectricFire : MonoBehaviour
     {
         if (!isActiveFire) return;
 
-        // ❌ CO2 ZORUNLU
+        // ❌ CO₂ ZORUNLU
         if (extinguisherType != ExtinguisherType.CO2)
         {
             ApplyWrongActionPenalty();

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8487633808299182151}
   - component: {fileID: 7309331325974110888}
   - component: {fileID: 7652565098082120856}
-  - component: {fileID: 8789190202919945049}
   - component: {fileID: 2455722265903346822}
+  - component: {fileID: 5888878969130112004}
   m_Layer: 8
   m_Name: ElectricFire
   m_TagString: Fire
@@ -4852,7 +4852,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 94bc8546fe222904c9fd6e0438c1b6fc, type: 3}
+  m_Resource: {fileID: 8300000, guid: 16c212c3ea038a843a6e308a98b839ee, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4947,25 +4947,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8789190202919945049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 755663551989619495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f003ecbbe44644e8868367b7350b09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  electricLever: {fileID: 0}
-  alivePenaltyInterval: 1.5
-  alivePenaltyAmount: -1
-  wrongActionPenalty: -2
-  wrongActionCooldown: 0.8
-  extinguishReward: 10
 --- !u!65 &2455722265903346822
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4987,6 +4968,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.42, y: 1.42, z: 1.0389042}
   m_Center: {x: 0, y: 0, z: -0.19054699}
+--- !u!114 &5888878969130112004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755663551989619495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610bf813881bc554591f51aaec7d9bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireType: 1
+  health: 3
+  alivePenaltyInterval: 1.5
+  alivePenaltyAmount: -1
+  extinguishReward: 20
+  wrongExtinguisherPenalty: -2
+  wrongPenaltyCooldown: 0.8
 --- !u!1 &1411684626444098716
 GameObject:
   m_ObjectHideFlags: 0

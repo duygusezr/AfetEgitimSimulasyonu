@@ -1423,7 +1423,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456935706}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 610bf813881bc554591f51aaec7d9bf9, type: 3}
   m_Name: 
@@ -1960,7 +1960,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682723649}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 610bf813881bc554591f51aaec7d9bf9, type: 3}
   m_Name: 
@@ -2950,12 +2950,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1344715905}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 610bf813881bc554591f51aaec7d9bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireType: 3
+  fireType: 1
   health: 3
   alivePenaltyInterval: 1.5
   alivePenaltyAmount: -1
@@ -3912,12 +3912,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Elektrik yang\u0131n\u0131 (C) - CO2 veya kuru kimyevi toz ile s\xF6nd\xFCr.
-    Su kullanma. Not: Elektrik yang\u0131n\u0131nda elektrik panosunu kapatmay\u0131
-    unutma.\n\nKat\u0131 madde yang\u0131n\u0131 (A) \u2013 (ka\u011F\u0131t, ah\u015Fap,
-    kuma\u015F)Su veya k\xF6p\xFCk ile s\xF6nd\xFCr.\n\nYa\u011F yang\u0131n\u0131
-    (F) \u2013 (k\u0131zartma ya\u011F\u0131) Kuru kimyevi toz ile s\xF6nd\xFCr.
-    Su kullanma, s\u0131\xE7rar.\n"
+  m_text: "Elektrik yang\u0131n\u0131 (C) - CO2 ile s\xF6nd\xFCr. Su kullanma. Not:
+    Elektrik yang\u0131n\u0131nda elektrik panosunu kapatmay\u0131 unutma.\n\nKat\u0131
+    madde yang\u0131n\u0131 (A) \u2013 (ka\u011F\u0131t, ah\u015Fap, kuma\u015F)Su
+    veya k\xF6p\xFCk ile s\xF6nd\xFCr.\n\nYa\u011F yang\u0131n\u0131 (F) \u2013 (k\u0131zartma
+    ya\u011F\u0131) Kuru kimyevi toz ile s\xF6nd\xFCr. Su kullanma, s\u0131\xE7rar.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4248,7 +4247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 890481779806304637, guid: 09d0418fe89420043b785bf5b3385051, type: 3}
       propertyPath: extinguisherType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 890481779806304637, guid: 09d0418fe89420043b785bf5b3385051, type: 3}
       propertyPath: fireLayer.m_Bits
@@ -4804,27 +4803,13 @@ PrefabInstance:
       addedObject: {fileID: 2062560203}
     - targetCorrespondingSourceObject: {fileID: 8098027139782048514, guid: 85613a3a0f37dab48bc7c0408ab0ca41, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2062560202}
+      addedObject: {fileID: 2062560209}
   m_SourcePrefab: {fileID: 100100000, guid: 85613a3a0f37dab48bc7c0408ab0ca41, type: 3}
 --- !u!1 &2062560201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8098027139782048514, guid: 85613a3a0f37dab48bc7c0408ab0ca41, type: 3}
   m_PrefabInstance: {fileID: 2062560200}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2062560202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062560201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8d9b254b202c5143a3fb5906ff92b47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offAngle: -60
-  useFireLock: 1
 --- !u!114 &2062560203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5000,6 +4985,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.03775509, y: 0.43895274, z: 0.30289903}
   m_Center: {x: -0.0000002621838, y: 0.15748209, z: 0.08958787}
+--- !u!114 &2062560209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062560201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d9b254b202c5143a3fb5906ff92b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offAngle: -60
+  useFireLock: 1
 --- !u!1001 &2071393112
 PrefabInstance:
   m_ObjectHideFlags: 0
