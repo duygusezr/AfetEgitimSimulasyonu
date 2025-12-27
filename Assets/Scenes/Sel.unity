@@ -5095,6 +5095,9 @@ PrefabInstance:
     - {fileID: 808951038047343289, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
     - {fileID: 808951036674250397, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
     - {fileID: 808951037427709066, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
+    - {fileID: 808951038298392503, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
+    - {fileID: 808951037158881960, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
+    - {fileID: 808951038219730522, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 808951037469216635, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
       insertIndex: -1
@@ -7087,7 +7090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd45e65060ec004d87f1a4cc90b9f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSlotCount: 20
+  totalSlotCount: 12
 --- !u!1 &1871635236
 GameObject:
   m_ObjectHideFlags: 0
