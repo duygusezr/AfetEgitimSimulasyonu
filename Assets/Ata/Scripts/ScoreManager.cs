@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
 
     void UpdateUI()
     {
-        scoreText.text = $"SKOR: {score}";
+        scoreText.text = $"SCORE: {score}";
 
         if (score > 0)
             scoreText.color = positiveColor;

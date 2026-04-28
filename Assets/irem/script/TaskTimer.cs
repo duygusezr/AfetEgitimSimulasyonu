@@ -47,7 +47,7 @@ public class TaskTimer : MonoBehaviour
         if (floodWarningPanel.activeSelf)
         {
             floodTimerText.text =
-                $"SEL GELMESİNE: {Mathf.CeilToInt(timer)} SN";
+                $"FLOOD INCOMING: {Mathf.CeilToInt(timer)} SECONDS";
         }
 
         // 🔴 süre biterse su yükselsin

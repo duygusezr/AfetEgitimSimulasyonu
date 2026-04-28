@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         completedTaskCount++;
 
-        Debug.Log("Görev tamamlandý: " + completedTaskCount + "/" + totalTaskCount);
+        Debug.Log("Gï¿½rev tamamlandï¿½: " + completedTaskCount + "/" + totalTaskCount);
 
         UpdateTaskUI();
 
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         if (taskProgressText != null)
         {
             taskProgressText.text =
-                $"Görev {completedTaskCount} / {totalTaskCount} tamamlandý";
+                $"Quest completed {completedTaskCount} / {totalTaskCount}";
         }
     }
 }
